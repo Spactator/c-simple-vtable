@@ -2,7 +2,7 @@
 A very simple vtable implement for c99
 
 Example
-```
+```c
 #include <stdio.h>
 #include <stdlib.h>
 
