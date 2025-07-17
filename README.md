@@ -2,7 +2,7 @@
 A very simple vtable implement for c99
 
 Example
-'''
+```
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -83,4 +83,4 @@ int main() {
 	DROP(animals[1]);
 	DROP(animals[2]);
 }
-'''
+```
