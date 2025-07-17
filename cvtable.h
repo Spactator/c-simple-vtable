@@ -37,6 +37,7 @@
 #define PURE_VIRTUAL_F___deinit // in order to ban __deinit as a pure virtual function
 #define PURE_VIRTUAL_F___deinit_dru
 
+// ..._dru are used to allow ";" back of the macro
 #define PURE_VIRTUAL(f)                                                                    \
 	void PURE_VIRTUAL_F_##f(void* this) {}                                                 \
 	void PURE_VIRTUAL_F_##f##_dru(void*)
