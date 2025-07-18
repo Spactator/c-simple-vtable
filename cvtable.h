@@ -37,16 +37,20 @@
 #define PURE_VIRTUAL_F___deinit // in order to ban __deinit as a pure virtual function
 #define PURE_VIRTUAL_F___deinit_dru
 
-// ..._dru are used to allow ";" back of the macro
 #define PURE_VIRTUAL(f)                                                                    \
-	void PURE_VIRTUAL_F_##f(void* this) {}                                                 \
+	void PURE_VIRTUAL_F_##f(void* this) {                                                  \
+		assert(!"Pure virtual function called");                                           \
+	}                                                                                      \
 	void PURE_VIRTUAL_F_##f##_dru(void*)
 #define PURE_VIRTUAL_ARGS(f, ...)                                                          \
-	void PURE_VIRTUAL_F_##f(void* this, __VA_ARGS__) {}                                    \
+	void PURE_VIRTUAL_F_##f(void* this, __VA_ARGS__) {                                     \
+		assert(!"Pure virtual function called");                                           \
+	}                                                                                      \
 	void PURE_VIRTUAL_F_##f##_dru(void* this, ...)
 #define PURE_VIRTUAL_FUNCTION(name) PURE_VIRTUAL_F_##name
 
-#define INSTANT_VTABLE(type, name, ...)                                                    \
+#define INSTANT_VTABLE(type, name, ...) static type VTABLE_INSTANCE_##name = { __VA_ARGS__ }
+#define INSTANT_VTABLE_CONSTANT(type, name, ...)                                           \
 	static const type VTABLE_INSTANCE_##name = { __VA_ARGS__ }
 #define VTABLE_OF(name) VTABLE_INSTANCE_##name
 
